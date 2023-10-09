@@ -42,15 +42,15 @@
                     </v-col>
                     <v-col class="text-center d-flex align-center">
                       <v-row>
-                      <img class="itemImg" v-if="game[0].item0 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${game[0].item0}.png`" :alt="game[0].item0">
-                      <img class="itemImg" v-if="game[0].item1 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${game[0].item1}.png`" :alt="game[0].item1">
-                      <img class="itemImg" v-if="game[0].item2 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${game[0].item2}.png`" :alt="game[0].item2">
-                      <img class="itemImg" v-if="game[0].item3 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${game[0].item3}.png`" :alt="game[0].item3">
-                      <img class="itemImg" v-if="game[0].item4 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${game[0].item4}.png`" :alt="game[0].item4">
-                      <img class="itemImg" v-if="game[0].item5 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${game[0].item5}.png`" :alt="game[0].item5">
-                      <img class="itemImg" v-if="game[0].item6 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${game[0].item6}.png`" :alt="game[0].item6">
+                        <img class="itemImg" v-if="game[0].item0 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${game[0].item0}.png`" :alt="game[0].item0">
+                        <img class="itemImg" v-if="game[0].item1 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${game[0].item1}.png`" :alt="game[0].item1">
+                        <img class="itemImg" v-if="game[0].item2 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${game[0].item2}.png`" :alt="game[0].item2">
+                        <img class="itemImg" v-if="game[0].item3 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${game[0].item3}.png`" :alt="game[0].item3">
+                        <img class="itemImg" v-if="game[0].item4 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${game[0].item4}.png`" :alt="game[0].item4">
+                        <img class="itemImg" v-if="game[0].item5 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${game[0].item5}.png`" :alt="game[0].item5">
+                        <img class="itemImg" v-if="game[0].item6 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${game[0].item6}.png`" :alt="game[0].item6">
 
-                    </v-row>
+                      </v-row>
                     </v-col>
               <v-col class="d-flex align-center">
                 <v-col class="text-right">
@@ -62,7 +62,45 @@
                 </v-col>
               </v-col>
             </v-row>
-            <v-col v-if="game[0].isExpanded"> {{game[0].isExpanded}}</v-col>
+            <v-col v-if="game[0].isExpanded">
+              
+              <v-col >
+                  <div class="gameDescribe" v-for="player in game">
+                    
+                      <v-row>
+                        <img class="champImg2" v-if="champions" :src="`https://static.bigbrain.gg/assets/lol/riot_static/13.19.1/img/champion/${player.championName}.png`">
+                        <v-col cols="2">
+                          <img class="spellImg" :src="`http://ddragon.leagueoflegends.com/cdn/13.19.1/img/spell/${findSpellName(player.summoner1Id)}.png`" :alt="summoner">
+                          <img class="spellImg"  :src="`http://ddragon.leagueoflegends.com/cdn/13.19.1/img/spell/${findSpellName(player.summoner2Id)}.png`" :alt="summoner">
+                        </v-col>
+                      <v-col>
+                        {{ player.summonerName }}
+                        {{ player.kills }} /
+                        {{ player.assists }} /
+                        {{ player.deaths }}
+                      </v-col>
+                      <v-col cols="6">
+                      <v-row>
+                          <img class="itemImg" v-if="player.item0 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${player.item0}.png`" :alt="player.item0">
+                          <img class="itemImg" v-if="player.item1 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${player.item1}.png`" :alt="player.item1">
+                          <img class="itemImg" v-if="player.item2 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${player.item2}.png`" :alt="player.item2">
+                          <img class="itemImg" v-if="player.item3 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${player.item3}.png`" :alt="player.item3">
+                          <img class="itemImg" v-if="player.item4 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${player.item4}.png`" :alt="player.item4">
+                          <img class="itemImg" v-if="player.item5 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${player.item5}.png`" :alt="player.item5">
+                          <img class="itemImg" v-if="player.item6 != 0" :src="`https://ddragon.leagueoflegends.com/cdn/13.19.1/img/item/${player.item6}.png`" :alt="player.item6">
+
+                        </v-row>
+                      </v-col>
+                      </v-row>
+                      <v-col>
+                        
+                      </v-col>
+                      
+                  
+                  </div>
+                  <v-btn @click="toggleCard(game)"> ^ </v-btn>
+                </v-col>
+              </v-col>
           </v-card-text>
           </v-card>
           </v-container>
@@ -201,6 +239,12 @@ export default {
 <style>
 input{
   color: white;
+}
+.gameDescribe{
+  margin: 10px;
+}
+.champImg2{
+  max-width:30%;
 }
 .champImg{
   max-width: 50%;
