@@ -6,6 +6,7 @@ require('dotenv').config()
 // }
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
+
   head: {
     titleTemplate: '%s - RIOT-APP',
     title: 'RIOT-APP',
@@ -45,7 +46,14 @@ export default {
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
     '@nuxtjs/dotenv',
+    '@nuxtjs/proxy'
   ],
+
+  proxy: {
+    "/api/v1": {target: "https://europe.api.riotgames.com", pathRewrite: {'^/api/v1': ''}},
+    "/api/v2": {target: "https://euw1.api.riotgames.com", pathRewrite: {'^/api/v2': ''}},
+
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
