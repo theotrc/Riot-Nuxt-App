@@ -3,10 +3,25 @@
   
     <!-- <img src="https://static.bigbrain.gg/assets/lol/riot_static/13.19.1/img/champion/d.png" alt="champions"> -->
     <div>
-      <v-text-field v-model="textInput" label="Entrez votre texte"></v-text-field>
+      <v-text-field v-model="textInput" label="Entrez le nom d'un joueur"></v-text-field>
       <v-btn @click="valider">Valider</v-btn>
     </div>
-      <p>{{ texte }}</p>
+    <div class="summonerName">
+      <h1>{{ texte }}</h1>
+    </div>
+      <div class= "profil" v-if="userInfo">
+        <div class="imagePlaceHolder"></div>
+        <div class="summonerImage">
+          <img class="profilImage" :src="`https://ddragon.leagueoflegends.com/cdn/12.6.1/img/profileicon/${userInfo.profileIconId}.png`" :alt="userInfo.profileIconId">
+        </div>
+        <div class="lvl">
+          <div class="lvlText">
+            {{userInfo.summonerLevel}}
+          </div>
+        </div>
+          
+      </div>
+      
       
 
      
@@ -124,6 +139,7 @@
 
 <script>
 import axios from "axios"
+
 export default {
   computed:{
     texte(){
@@ -134,6 +150,9 @@ export default {
           this.championsRequest();
           this.spellsRequest();
           this.sumRequest(this.$route.params.text)
+          var imgElements = document.getElementsByClassName("summonerImage");
+          var imageHeight = imgElements.height;
+          console.log(`mon elelemt ${imgElements.height}`)
         },
     data(){
 
@@ -273,6 +292,41 @@ input{
 }
 .champImgAlly{
   max-width: 10%;
+}
+.summonerImage{
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+}
+.profilImage{
+  max-width: 40%;
+  display: flex;
+  justify-content: center;
+}
+.lvl{
+  position: absolute;
+  z-index: 2;
+  background-color: rgb(26, 25, 25);
+  border-radius: 30%;
+  width: 5%;
+  justify-content: center;
+  
+}
+.lvlText{
+  justify-content: center;
+  display: flex;
+}
+.profil{
+  position: relative;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: 200px;
+}
+.summonerName{
+  display: flex;
+  justify-content: center;
 }
 </style>
 

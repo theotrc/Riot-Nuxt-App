@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-text-field v-model="textInput" label="Entrez votre texte"></v-text-field>
+    <v-text-field v-model="textInput" label="Entrez le nom d'un joueur"></v-text-field>
     <v-btn @click="valider">Valider</v-btn>
   </div>
 </template>
