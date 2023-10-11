@@ -1,23 +1,15 @@
 <template>
+  
   <div>
-    <v-text-field v-model="textInput" label="Entrez le nom d'un joueur"></v-text-field>
-    <v-btn @click="valider">Valider</v-btn>
+    <monComposant /> 
   </div>
 </template>
 
 <script>
+import monComposant from '~/components/test'
 export default {
-  data() {
-    return {
-      textInput: ''
-    }
-  },
-  methods: {
-    valider() {
-      if (this.textInput.trim() !== '') {
-        this.$router.push(`/stats/${encodeURIComponent(this.textInput)}`);
-      }
-    }
+  components: {
+    monComposant
   }
 }
 </script>

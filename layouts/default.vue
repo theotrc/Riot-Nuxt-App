@@ -76,15 +76,11 @@ export default {
       drawer: false,
       fixed: false,
       items: [
-        {
-          icon: 'mdi-gavel',
-          title: 'Stats',
-          to: '/stats'
-        },
+        
         {
           icon: 'mdi-chart-bubble',
-          title: 'Meta',
-          to: '/meta'
+          title: 'Home',
+          to: '/'
         }
       ],
       miniVariant: false,

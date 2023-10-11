@@ -3,8 +3,7 @@
   
     <!-- <img src="https://static.bigbrain.gg/assets/lol/riot_static/13.19.1/img/champion/d.png" alt="champions"> -->
     <div>
-      <v-text-field v-model="textInput" label="Entrez le nom d'un joueur"></v-text-field>
-      <v-btn @click="valider">Valider</v-btn>
+      <monComposant /> 
     </div>
     <div class="summonerName">
       <h1>{{ texte }}</h1>
@@ -139,8 +138,13 @@
 
 <script>
 import axios from "axios"
+import monComposant from '~/components/test'
+
 
 export default {
+  components: {
+    monComposant
+  },
   computed:{
     texte(){
       return this.$route.params.text;
@@ -176,6 +180,7 @@ export default {
   toggleCard(game) {
       game[0].isExpanded = !game[0].isExpanded;
     },
+    
   valider() {
       if (this.textInput.trim() !== '') {
         this.$router.push(`/stats/${encodeURIComponent(this.textInput)}`);
@@ -255,79 +260,81 @@ export default {
 }
 
 </script>
-<style>
-input{
-  color: white;
-}
-.gameDescribe{
-  margin: 10px;
-}
-.champImg2{
-  max-width:30%;
-}
-.champImg{
-  max-width: 50%;
-}
-.itemImg{
-  max-width: 20%;
-}
-.green-card{
-  background-color: rgba(6, 222, 255, 0.3) !important;
-  
-}
-.red-card:hover{
-  cursor: pointer;
-}
-.green-card:hover{
-  cursor: pointer;
-}
-.red-card{
-  background-color: rgba(255, 0, 0, 0.3) !important;
-}
-.spellImg{
-  max-width: 50%;
-}
-.summonerName{
-  margin: 0 !important;
-}
-.champImgAlly{
-  max-width: 10%;
-}
-.summonerImage{
-  position: absolute;
-  z-index: 1;
-  display: flex;
-  justify-content: center;
-}
-.profilImage{
-  max-width: 40%;
-  display: flex;
-  justify-content: center;
-}
-.lvl{
-  position: absolute;
-  z-index: 2;
-  background-color: rgb(26, 25, 25);
-  border-radius: 30%;
-  width: 5%;
-  justify-content: center;
-  
-}
-.lvlText{
-  justify-content: center;
-  display: flex;
-}
-.profil{
-  position: relative;
-  display: flex;
-  justify-content: center;
-  width: 100%;
-  height: 200px;
-}
-.summonerName{
-  display: flex;
-  justify-content: center;
-}
+<style scoped>
+  input{
+    color: white;
+  }
+  .gameDescribe{
+    margin: 10px;
+  }
+  .champImg2{
+    max-width:30%;
+  }
+  .champImg{
+    max-width: 50%;
+    min-width: 30px;
+  }
+  .itemImg{
+    max-width: 20%;
+  }
+  .green-card{
+    background-color: rgba(6, 222, 255, 0.3) !important;
+    
+  }
+  .red-card:hover{
+    cursor: pointer;
+  }
+  .green-card:hover{
+    cursor: pointer;
+  }
+  .red-card{
+    background-color: rgba(255, 0, 0, 0.3) !important;
+  }
+  .spellImg{
+    max-width: 50%;
+    min-width: 14px;
+  }
+  .summonerName{
+    margin: 0 !important;
+  }
+  .champImgAlly{
+    max-width: 10%;
+  }
+  .summonerImage{
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+  }
+  .profilImage{
+    max-width: 40%;
+    display: flex;
+    justify-content: center;
+  }
+  .lvl{
+    position: absolute;
+    z-index: 2;
+    background-color: rgb(26, 25, 25);
+    border-radius: 30%;
+    width: 5%;
+    justify-content: center;
+    
+  }
+  .lvlText{
+    justify-content: center;
+    display: flex;
+  }
+  .profil{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 200px;
+  }
+  .summonerName{
+    display: flex;
+    justify-content: center;
+  }
 </style>
 
  
